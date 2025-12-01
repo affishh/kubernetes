@@ -1,0 +1,129 @@
+apiVersion: v1
+kind: Pod
+metadata:
+  creationTimestamp: "2025-12-01T07:13:44Z"
+  generateName: nginx-deployment-6f9664446b-
+  generation: 1
+  labels:
+    app: nginx
+    pod-template-hash: 6f9664446b
+  name: nginx-deployment-6f9664446b-bqtnl
+  namespace: default
+  ownerReferences:
+  - apiVersion: apps/v1
+    blockOwnerDeletion: true
+    controller: true
+    kind: ReplicaSet
+    name: nginx-deployment-6f9664446b
+    uid: 901ae8ff-46d7-47e1-b971-b74543d45a15
+  resourceVersion: "47429"
+  uid: 9541b1a2-d120-4074-98b5-efd076896264
+spec:
+  containers:
+  - image: nginx:latest
+    imagePullPolicy: Always
+    name: nginx
+    ports:
+    - containerPort: 80
+      protocol: TCP
+    resources: {}
+    terminationMessagePath: /dev/termination-log
+    terminationMessagePolicy: File
+    volumeMounts:
+    - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+      name: kube-api-access-wq4q6
+      readOnly: true
+  dnsPolicy: ClusterFirst
+  enableServiceLinks: true
+  nodeName: minikube
+  preemptionPolicy: PreemptLowerPriority
+  priority: 0
+  restartPolicy: Always
+  schedulerName: default-scheduler
+  securityContext: {}
+  serviceAccount: default
+  serviceAccountName: default
+  terminationGracePeriodSeconds: 30
+  tolerations:
+  - effect: NoExecute
+    key: node.kubernetes.io/not-ready
+    operator: Exists
+    tolerationSeconds: 300
+  - effect: NoExecute
+    key: node.kubernetes.io/unreachable
+    operator: Exists
+    tolerationSeconds: 300
+  volumes:
+  - name: kube-api-access-wq4q6
+    projected:
+      defaultMode: 420
+      sources:
+      - serviceAccountToken:
+          expirationSeconds: 3607
+          path: token
+      - configMap:
+          items:
+          - key: ca.crt
+            path: ca.crt
+          name: kube-root-ca.crt
+      - downwardAPI:
+          items:
+          - fieldRef:
+              apiVersion: v1
+              fieldPath: metadata.namespace
+            path: namespace
+status:
+  conditions:
+  - lastProbeTime: null
+    lastTransitionTime: "2025-12-01T07:13:51Z"
+    observedGeneration: 1
+    status: "True"
+    type: PodReadyToStartContainers
+  - lastProbeTime: null
+    lastTransitionTime: "2025-12-01T07:13:44Z"
+    observedGeneration: 1
+    status: "True"
+    type: Initialized
+  - lastProbeTime: null
+    lastTransitionTime: "2025-12-01T07:13:51Z"
+    observedGeneration: 1
+    status: "True"
+    type: Ready
+  - lastProbeTime: null
+    lastTransitionTime: "2025-12-01T07:13:51Z"
+    observedGeneration: 1
+    status: "True"
+    type: ContainersReady
+  - lastProbeTime: null
+    lastTransitionTime: "2025-12-01T07:13:44Z"
+    observedGeneration: 1
+    status: "True"
+    type: PodScheduled
+  containerStatuses:
+  - containerID: docker://a850583431123a487b48e92ccd2f2d1397ee33bbf063d7a327e109ddca0940a4
+    image: nginx:latest
+    imageID: docker-pullable://nginx@sha256:553f64aecdc31b5bf944521731cd70e35da4faed96b2b7548a3d8e2598c52a42
+    lastState: {}
+    name: nginx
+    ready: true
+    resources: {}
+    restartCount: 0
+    started: true
+    state:
+      running:
+        startedAt: "2025-12-01T07:13:51Z"
+    volumeMounts:
+    - mountPath: /var/run/secrets/kubernetes.io/serviceaccount
+      name: kube-api-access-wq4q6
+      readOnly: true
+      recursiveReadOnly: Disabled
+  hostIP: 192.168.39.207
+  hostIPs:
+  - ip: 192.168.39.207
+  observedGeneration: 1
+  phase: Running
+  podIP: 10.244.0.130
+  podIPs:
+  - ip: 10.244.0.130
+  qosClass: BestEffort
+  startTime: "2025-12-01T07:13:44Z"
